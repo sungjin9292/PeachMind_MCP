@@ -1,5 +1,6 @@
 package com.peachmind.mcp.scraper.mcpscraper2.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.scribejava.apis.TwitterApi;
 import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.model.OAuth1AccessToken;
@@ -15,6 +16,8 @@ import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @Slf4j
 @Service
@@ -50,9 +53,16 @@ public class TwitterUploadService {
             //토큰 세팅(twitter api developer page 발급)
             OAuth1AccessToken  tokenResult  = new OAuth1AccessToken(TWT_ACCESS_TOKEN, TWT_ACCESS_TOKEN_SECRET);
 
+            // 줄바꿈 포함한 content를 JSON으로 직렬화
+            ObjectMapper objectMapper = new ObjectMapper();
+            Map<String, String> jsonMap = new HashMap<>();
+            jsonMap.put("text", content);
+            String jsonPayload = objectMapper.writeValueAsString(jsonMap);
+
             OAuthRequest request = new OAuthRequest(Verb.POST, "https://api.twitter.com/2/tweets");
             request.addHeader("Content-Type", "application/json;charset=UTF-8");
-            request.setPayload("{\"text\":\"" + content + "\"}");
+            //request.setPayload("{\"text\":\"" + content + "\"}");
+            request.setPayload(jsonPayload);
 
             service.signRequest(tokenResult, request);
             Response response = service.execute(request);
