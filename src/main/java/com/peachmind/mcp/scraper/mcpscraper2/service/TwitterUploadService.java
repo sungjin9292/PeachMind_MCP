@@ -1,5 +1,6 @@
 package com.peachmind.mcp.scraper.mcpscraper2.service;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.scribejava.apis.TwitterApi;
 import com.github.scribejava.core.builder.ServiceBuilder;
@@ -11,11 +12,14 @@ import com.github.scribejava.core.oauth.OAuth10aService;
 import com.peachmind.mcp.scraper.mcpscraper2.config.TwitterConfig;
 import com.peachmind.mcp.scraper.mcpscraper2.dto.DefaultResponse;
 import com.peachmind.mcp.scraper.mcpscraper2.dto.ScrapedResultUploadReq;
+import com.peachmind.mcp.scraper.mcpscraper2.entity.TweetLog;
+import com.peachmind.mcp.scraper.mcpscraper2.repository.TweetLogRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.tool.annotation.Tool;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,10 +27,12 @@ import java.util.Map;
 @Service
 public class TwitterUploadService {
 
-    TwitterConfig twitterConfig;
+    private final TwitterConfig twitterConfig;
+    private final TweetLogRepository tweetLogRepository;
 
-    public TwitterUploadService(TwitterConfig twitterConfig) {
+    public TwitterUploadService(TwitterConfig twitterConfig, TweetLogRepository tweetLogRepository) {
         this.twitterConfig = twitterConfig;
+        this.tweetLogRepository = tweetLogRepository;
     }
 
     @Tool(name="upload_twitter_post", description = "Upload twitter post")
@@ -67,8 +73,25 @@ public class TwitterUploadService {
             service.signRequest(tokenResult, request);
             Response response = service.execute(request);
 
+            log.info("Response code: " + response.getCode());
+            log.info("Response body: " + response.getBody());
+
             //response값 검증
-            if(response.getCode() == 200){
+            if(response.getCode() == 200 || response.getCode() == 201){
+
+                JsonNode jsonNode = objectMapper.readTree(response.getBody());
+                String tweetId = jsonNode.path("data").path("id").asText();
+
+                TweetLog logEntity = TweetLog.builder()
+                        .tweetId(tweetId)
+                        .tweetContent(content)
+                        .tweetTime(LocalDateTime.now())
+                        .status("SUCCESS")
+                        .tweetUrl("https://twitter.com/your_username/status/" + tweetId) // 계정명 바꿔
+                        .build();
+
+                tweetLogRepository.save(logEntity);
+
                 return DefaultResponse.success("Success: Posted '" + content + "'", null);
             }else{
                 throw new IOException("Failed to post tweet: " + response.getBody());

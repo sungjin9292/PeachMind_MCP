@@ -25,3 +25,59 @@
 2025-05-27T11:17:50.632+09:00  INFO 8144 --- [mcp-scraper2] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-05-27T11:17:50.636+09:00  INFO 8144 --- [mcp-scraper2] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-05-27T11:17:50.640+09:00  INFO 8144 --- [mcp-scraper2] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-27T13:53:11.882+09:00  INFO 27048 --- [mcp-scraper2] [main] c.p.m.s.m.McpScraper2ApplicationTests    : Starting McpScraper2ApplicationTests using Java 17.0.12 with PID 27048 (started by 손성진 in C:\sungjin\mcp-scraper2)
+2025-05-27T13:53:11.882+09:00  INFO 27048 --- [mcp-scraper2] [main] c.p.m.s.m.McpScraper2ApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2025-05-27T13:53:12.556+09:00  INFO 27048 --- [mcp-scraper2] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-27T13:53:12.696+09:00  INFO 27048 --- [mcp-scraper2] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 124 ms. Found 1 JPA repository interface.
+2025-05-27T13:53:13.127+09:00  INFO 27048 --- [mcp-scraper2] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-27T13:53:13.224+09:00  INFO 27048 --- [mcp-scraper2] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-05-27T13:53:13.270+09:00  INFO 27048 --- [mcp-scraper2] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-27T13:53:13.636+09:00  INFO 27048 --- [mcp-scraper2] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-27T13:53:13.701+09:00  INFO 27048 --- [mcp-scraper2] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-27T13:53:13.919+09:00  INFO 27048 --- [mcp-scraper2] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@68e24e7
+2025-05-27T13:53:13.919+09:00  INFO 27048 --- [mcp-scraper2] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-27T13:53:14.017+09:00  INFO 27048 --- [mcp-scraper2] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 14.15
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-27T13:53:14.904+09:00  INFO 27048 --- [mcp-scraper2] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-27T13:53:14.934+09:00  INFO 27048 --- [mcp-scraper2] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-27T13:53:15.267+09:00  INFO 27048 --- [mcp-scraper2] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-27T13:53:15.647+09:00  INFO 27048 --- [mcp-scraper2] [main] o.s.a.a.m.s.MpcServerAutoConfiguration   : Registered tools4 notification: true
+2025-05-27T13:53:15.934+09:00  INFO 27048 --- [mcp-scraper2] [main] c.p.m.s.m.McpScraper2ApplicationTests    : Started McpScraper2ApplicationTests in 4.364 seconds (process running for 5.245)
+2025-05-27T13:53:16.420+09:00  INFO 27048 --- [mcp-scraper2] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-27T13:53:16.424+09:00  INFO 27048 --- [mcp-scraper2] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-27T13:53:16.434+09:00  INFO 27048 --- [mcp-scraper2] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-27T17:51:55.945+09:00  INFO 13256 --- [mcp-scraper2] [main] c.p.m.s.m.McpScraper2ApplicationTests    : Starting McpScraper2ApplicationTests using Java 17.0.12 with PID 13256 (started by 손성진 in C:\sungjin\mcp-scraper2)
+2025-05-27T17:51:55.948+09:00  INFO 13256 --- [mcp-scraper2] [main] c.p.m.s.m.McpScraper2ApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2025-05-27T17:51:56.657+09:00  INFO 13256 --- [mcp-scraper2] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-27T17:51:56.823+09:00  INFO 13256 --- [mcp-scraper2] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 158 ms. Found 2 JPA repository interfaces.
+2025-05-27T17:51:57.384+09:00  INFO 13256 --- [mcp-scraper2] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-27T17:51:57.522+09:00  INFO 13256 --- [mcp-scraper2] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-05-27T17:51:57.582+09:00  INFO 13256 --- [mcp-scraper2] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-27T17:51:58.063+09:00  INFO 13256 --- [mcp-scraper2] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-27T17:51:58.128+09:00  INFO 13256 --- [mcp-scraper2] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-27T17:51:58.423+09:00  INFO 13256 --- [mcp-scraper2] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@14be750c
+2025-05-27T17:51:58.425+09:00  INFO 13256 --- [mcp-scraper2] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-27T17:51:58.534+09:00  INFO 13256 --- [mcp-scraper2] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 14.15
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-27T17:51:59.521+09:00  INFO 13256 --- [mcp-scraper2] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-27T17:51:59.621+09:00  WARN 13256 --- [mcp-scraper2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2025-05-27T17:51:59.621+09:00  WARN 13256 --- [mcp-scraper2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : "uk3b9vrmq5s2pidiuvb0yg5xqvk" 제약 조건(해당 테이블: "tweet_log")이 없음, 건너뜀
+2025-05-27T17:51:59.628+09:00  INFO 13256 --- [mcp-scraper2] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-27T17:51:59.970+09:00  INFO 13256 --- [mcp-scraper2] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-27T17:52:00.465+09:00  INFO 13256 --- [mcp-scraper2] [main] o.s.a.a.m.s.MpcServerAutoConfiguration   : Registered tools4 notification: true
+2025-05-27T17:52:00.771+09:00  INFO 13256 --- [mcp-scraper2] [main] c.p.m.s.m.McpScraper2ApplicationTests    : Started McpScraper2ApplicationTests in 5.238 seconds (process running for 6.541)
+2025-05-27T17:52:01.347+09:00  INFO 13256 --- [mcp-scraper2] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-27T17:52:01.349+09:00  INFO 13256 --- [mcp-scraper2] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-27T17:52:01.355+09:00  INFO 13256 --- [mcp-scraper2] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
