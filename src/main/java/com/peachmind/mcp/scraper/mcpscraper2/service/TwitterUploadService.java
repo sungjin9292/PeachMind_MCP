@@ -27,12 +27,16 @@ import java.util.Map;
 @Service
 public class TwitterUploadService {
 
+    private static final String TWITTER_URL_PREFIX = "https://twitter.com/your_username/status/";
+
     private final TwitterConfig twitterConfig;
     private final TweetLogRepository tweetLogRepository;
+    private final NotionUploadService notionUploadService;
 
-    public TwitterUploadService(TwitterConfig twitterConfig, TweetLogRepository tweetLogRepository) {
+    public TwitterUploadService(TwitterConfig twitterConfig, TweetLogRepository tweetLogRepository, NotionUploadService notionUploadService) {
         this.twitterConfig = twitterConfig;
         this.tweetLogRepository = tweetLogRepository;
+        this.notionUploadService = notionUploadService;
     }
 
     @Tool(name="upload_twitter_post", description = "Upload twitter post")
@@ -76,21 +80,12 @@ public class TwitterUploadService {
             log.info("Response code: " + response.getCode());
             log.info("Response body: " + response.getBody());
 
-            //response값 검증
             if(response.getCode() == 200 || response.getCode() == 201){
-
                 JsonNode jsonNode = objectMapper.readTree(response.getBody());
                 String tweetId = jsonNode.path("data").path("id").asText();
 
-                TweetLog logEntity = TweetLog.builder()
-                        .tweetId(tweetId)
-                        .tweetContent(content)
-                        .tweetTime(LocalDateTime.now())
-                        .status("SUCCESS")
-                        .tweetUrl("https://twitter.com/your_username/status/" + tweetId) // 계정명 바꿔
-                        .build();
-
-                tweetLogRepository.save(logEntity);
+                saveTweetLog(tweetId, content, "SUCCESS", TWITTER_URL_PREFIX + tweetId);
+                notionUploadService.uploadTweetToNotion(content);
 
                 return DefaultResponse.success("Success: Posted '" + content + "'", null);
             }else{
@@ -101,4 +96,19 @@ public class TwitterUploadService {
             return DefaultResponse.fail("Fail: Posted " + e, null);
         }
     }
+
+    // 트위터 게시글 정보 DB 저장
+    public void saveTweetLog(String tweetId, String content, String status, String url) {
+        TweetLog log = TweetLog.builder()
+                .tweetId(tweetId)
+                .tweetContent(content)
+                .tweetTime(LocalDateTime.now())
+                .status(status)
+                .tweetUrl(url)
+                .build();
+        tweetLogRepository.save(log);
+    }
+
+
+
 }
